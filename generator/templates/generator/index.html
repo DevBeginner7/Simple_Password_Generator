@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Password Generator</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="/static/generator/style.css">
+</head>
+
+<body class="bg-gray-950 text-white min-h-screen flex items-center justify-center p-5">
+
+<div class="bg-gray-900 w-full max-w-xl rounded-2xl shadow-2xl p-8">
+
+    <h1 class="text-3xl font-bold text-center mb-8">
+        Secure Password Generator
+    </h1>
+
+    <!-- Password Display -->
+    <div class="relative mb-6">
+
+        <div id="passwordDisplay"
+             class="bg-gray-800 text-green-400 text-lg p-4 rounded-lg break-all min-h-[60px] flex items-center">
+            Your password appears here
+        </div>
+
+        <button id="copyBtn"
+                class="absolute top-2 right-2 bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition">
+            Copy
+        </button>
+
+        <span id="copyMessage"
+              class="absolute -bottom-6 right-0 text-green-400 opacity-0 transition">
+            Copied!
+        </span>
+    </div>
+
+    <!-- Strength Meter -->
+    <div class="mb-6">
+        <div class="w-full h-3 bg-gray-700 rounded-full overflow-hidden">
+            <div id="strengthBar"
+                 class="h-full w-0 bg-red-500 transition-all duration-300">
+            </div>
+        </div>
+
+        <p id="strengthText" class="mt-2 text-sm text-gray-300">
+            Password Strength
+        </p>
+    </div>
+
+    <!-- Length Slider -->
+    <div class="mb-6">
+
+        <div class="flex justify-between mb-2">
+            <label>Password Length</label>
+            <span id="lengthValue">12</span>
+        </div>
+
+        <input type="range"
+               id="lengthSlider"
+               min="8"
+               max="24"
+               value="12"
+               class="w-full">
+    </div>
+
+    <!-- Checkboxes -->
+    <div class="space-y-4 mb-8">
+
+        <label class="flex items-center gap-3">
+            <input type="checkbox" id="uppercase" class="w-5 h-5">
+            Include Uppercase
+        </label>
+
+        <label class="flex items-center gap-3">
+            <input type="checkbox" id="numbers" class="w-5 h-5">
+            Include Numbers
+        </label>
+
+        <label class="flex items-center gap-3">
+            <input type="checkbox" id="symbols" class="w-5 h-5">
+            Include Symbols
+        </label>
+
+    </div>
+
+    <!-- Generate Button -->
+    <button id="generateBtn"
+            class="w-full bg-green-600 hover:bg-green-700 py-4 rounded-xl text-lg font-semibold transition">
+        Generate Password
+    </button>
+
+</div>
+
+<script>
+    const csrfToken = "{{ csrf_token }}";
+</script>
+
+<script src="/static/generator/app.js"></script>
+
+</body>
+</html>
